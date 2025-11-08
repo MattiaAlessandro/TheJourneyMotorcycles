@@ -8,78 +8,54 @@ function toggleForm(id){
   form.style.display = form.style.display === "block" ? "none" : "block";
 }
 
- /* CAROUSEL */
-const carousels = document.querySelectorAll("[data-carousel]");
-
-carousels.forEach(carousel => {
-    const track = carousel.querySelector(".carousel-track");
-    const nextBtn = carousel.querySelector("[data-carousel-next]");
-    const prevBtn = carousel.querySelector("[data-carousel-prev]");
-    
-    let index = 0;
-    const slides = track.children;
-    const total = slides.length;
-
-    function updateCarousel() {
-        track.style.transform = `translateX(-${index * 100}%)`;
-    }
-
-    nextBtn.addEventListener("click", () => {
-        index = (index + 1) % total;
-        track.style.transform = `translateX(-${index * 100}%)`;
-    });
-
-    prevBtn.addEventListener("click", () => {
-        index = (index - 1 + total) % total;
-        track.style.transform = `translateX(-${index * 100}%)`;
-    });
-
-    // blocca trascinamento immagini (evita glitch)
-    slides.forEach(img => img.setAttribute("draggable", "false"));
-});
-
-/* Swipe touch support */
+ //* CAROUSEL MULTI-INSTANCE + SWIPE */
 document.querySelectorAll("[data-carousel]").forEach(carousel => {
-    const track = carousel.querySelector(".carousel-track");
-    const slides = Array.from(track.children);
-    const total = slides.length;
 
-    let index = 0;
-    let startX = 0;
-    let currentX = 0;
-    let moving = false;
+  const track = carousel.querySelector(".carousel-track");
+  const slides = Array.from(track.children);
+  const nextBtn = carousel.querySelector("[data-carousel-next]");
+  const prevBtn = carousel.querySelector("[data-carousel-prev]");
 
-    function update() {
-        track.style.transform = `translateX(-${index * 100}%)`;
-    }
+  let index = 0;
+  const total = slides.length;
 
-    // Start swipe
-    track.addEventListener("touchstart", e => {
-        startX = e.touches[0].clientX;
-        moving = true;
-    }, { passive: true });
+  function update() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }
 
-    // Track swipe movement
-    track.addEventListener("touchmove", e => {
-        if (!moving) return;
-        currentX = e.touches[0].clientX;
-
-        const diff = currentX - startX;
-
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) {
-                index = (index - 1 + total) % total;
-            } else {
-                index = (index + 1) % total;
-            }
-            update();
-            moving = false;
-        }
-    }, { passive: true });
-
-    track.addEventListener("touchend", () => {
-        moving = false;
-    });
-
+  // Pulsanti
+  nextBtn?.addEventListener("click", () => {
+    index = (index + 1) % total;
     update();
+  });
+
+  prevBtn?.addEventListener("click", () => {
+    index = (index - 1 + total) % total;
+    update();
+  });
+
+  // SWIPE TOUCH
+  let startX = 0;
+  let moving = false;
+
+  track.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+    moving = true;
+  }, { passive: true });
+
+  track.addEventListener("touchmove", e => {
+    if (!moving) return;
+    const diff = e.touches[0].clientX - startX;
+
+    if (Math.abs(diff) > 60) {
+      index = diff > 0 ? (index - 1 + total) % total : (index + 1) % total;
+      update();
+      moving = false;
+    }
+  }, { passive: true });
+
+  track.addEventListener("touchend", () => { moving = false; });
+
+  update();
 });
+
