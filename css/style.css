@@ -96,3 +96,35 @@ form button{width:100%;padding:10px;background:var(--accent);border:none;color:#
 
 .carousel-btn.prev { left: 10px; }
 .carousel-btn.next { right: 10px; }
+
+.carousel-track img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;     /* mai tagliare */
+  display: block;
+  background: #000;        /* sfondo neutro */
+}
+
+/* Altezza uniforme del carosello */
+.carousel {
+  background: linear-gradient(180deg, #111, #000); /* sfumatura elegante */
+  height: 60vh;               /* altezza responsiva */
+  max-height: 600px;
+  min-height: 300px;
+  display: flex;
+  align-items: center;        /* centra verticalmente */
+}
+
+/* Mantiene una slide per volta */
+.carousel-track > * {
+  flex: 0 0 100%;
+}
+
+/* Mobile ottimizzato */
+@media (max-width: 720px) {
+  .carousel {
+    height: 45vh;
+    max-height: 420px;
+    min-height: 240px;
+    }
+}
