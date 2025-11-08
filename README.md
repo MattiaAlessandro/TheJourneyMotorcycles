@@ -1,2 +1,0 @@
-# TheJourneyMotorcycles
-bikers group website
