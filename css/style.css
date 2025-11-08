@@ -47,3 +47,52 @@ form button{width:100%;padding:10px;background:var(--accent);border:none;color:#
  .burger{display:block;}
  .cards{grid-template-columns:1fr;}
 }
+.moto-section, .uscita-section {
+    margin: 60px auto;
+    max-width: 900px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--accent);
+}
+
+/* CAROUSEL */
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform .4s ease-in-out;
+}
+
+.carousel-track img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,.5);
+    border: none;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 22px;
+    color: white;
+    border-radius: 50%;
+}
+.carousel-btn:hover {
+    background: var(--accent);
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
