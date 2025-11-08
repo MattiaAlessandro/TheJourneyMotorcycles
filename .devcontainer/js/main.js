@@ -1,1 +1,11 @@
-function toggleForm(id){const f=document.getElementById(id);f.style.display=f.style.display==='block'?'none':'block';}
+document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".btn-partecipa");
+    const formContainer = document.getElementById("form-partecipa");
+
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            formContainer.style.display = "block";
+            window.scrollTo({ top: formContainer.offsetTop, behavior: "smooth" });
+        });
+    });
+});
