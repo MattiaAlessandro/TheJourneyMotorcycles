@@ -1,0 +1,7 @@
+body{margin:0;background:#111;color:#eee;font-family:Arial;}
+nav ul{display:flex;gap:20px;list-style:none;padding:20px;background:#000;margin:0;}
+nav a{color:#eee;text-decoration:none;}
+.card-container{display:flex;gap:40px;padding:60px;justify-content:center;}
+.card{width:280px;height:280px;background:#222;border-radius:8px;overflow:hidden;display:flex;flex-direction:column;}
+.card-bottom{text-align:center;padding:15px;}
+.uscite-form{display:none;flex-direction:column;gap:10px;margin-top:10px;}

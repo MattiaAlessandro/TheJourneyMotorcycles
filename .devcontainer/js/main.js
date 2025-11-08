@@ -1,0 +1,1 @@
+function toggleForm(id){const f=document.getElementById(id);f.style.display=f.style.display==='block'?'none':'block';}
