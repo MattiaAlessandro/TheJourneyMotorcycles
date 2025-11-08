@@ -8,16 +8,16 @@ function toggleForm(id){
   form.style.display = form.style.display === "block" ? "none" : "block";
 }
 
-    document.addEventListener("DOMContentLoaded", () => {
-    const carousel = document.querySelector("[data-carousel]");
-    if (!carousel) return;
+ /* CAROUSEL */
+const carousels = document.querySelectorAll("[data-carousel]");
 
+carousels.forEach(carousel => {
     const track = carousel.querySelector(".carousel-track");
-    const slides = Array.from(track.children);
-    const prevBtn = carousel.querySelector("[data-carousel-prev]");
     const nextBtn = carousel.querySelector("[data-carousel-next]");
-
+    const prevBtn = carousel.querySelector("[data-carousel-prev]");
+    
     let index = 0;
+    const slides = track.children;
     const total = slides.length;
 
     function updateCarousel() {
@@ -26,12 +26,12 @@ function toggleForm(id){
 
     nextBtn.addEventListener("click", () => {
         index = (index + 1) % total;
-        updateCarousel();
+        track.style.transform = `translateX(-${index * 100}%)`;
     });
 
     prevBtn.addEventListener("click", () => {
         index = (index - 1 + total) % total;
-        updateCarousel();
+        track.style.transform = `translateX(-${index * 100}%)`;
     });
 
     // blocca trascinamento immagini (evita glitch)
