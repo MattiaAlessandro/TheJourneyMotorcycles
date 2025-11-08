@@ -60,24 +60,24 @@ form button{width:100%;padding:10px;background:var(--accent);border:none;color:#
     color: var(--accent);
 }
 
-/* CAROUSEL */
+* CONTAINER CAROSELLO */
 .carousel {
   position: relative;
   overflow: hidden;
   width: 100%;
   max-width: 950px;
-  margin: 0 auto;
-  background: #000; /* mantiene coerenza cromatica */
-  border-radius: 10px;
+  margin: 30px auto;
+  border-radius: 12px;
+  background: #000;
 }
 
-/* Track scorrevole */
+/* TRACK – contiene le slide */
 .carousel-track {
   display: flex;
   transition: transform 0.35s ease;
 }
 
-/* Ogni slide occupa esattamente la larghezza del carosello */
+/* Ogni slide occupa 100% della larghezza */
 .carousel-track > * {
   flex: 0 0 100%;
   display: flex;
@@ -85,18 +85,54 @@ form button{width:100%;padding:10px;background:var(--accent);border:none;color:#
   align-items: center;
 }
 
-/* L'immagine non deve tagliarsi né deformarsi */
+/* IMMAGINI */
 .carousel-track img {
-  width: auto;          /* lascia proporzioni naturali */
-  height: 60vh;         /* adatta l’immagine all’altezza */
-  max-height: 600px;
-  object-fit: contain;  /* mostra l’immagine intera */
+  width: 100%;
+  height: 500px;           /* Altezza fissa desktop */
+  object-fit: cover;       /* Riempe mantenendo proporzioni */
+  object-position: center;
+  border-radius: 12px;
 }
 
-/* Mobile */
-@media (max-width: 720px) {
+/* MOBILE */
+@media (max-width: 600px) {
   .carousel-track img {
-    height: 45vh;
-    max-height: 340px;
+    height: 300px;         /* Altezza ridotta mobile */
   }
+}
+
+/* FRECCE */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35); /* grigio trasparente */
+  color: #111;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background 0.25s, color 0.25s;
+}
+
+/* hover / active */
+.carousel-btn:hover,
+.carousel-btn:active {
+  background: #ff6a00;     /* Arancione */
+  color: #fff;
+}
+
+/* Posizione delle frecce */
+.carousel-btn.prev {
+  left: 12px;
+}
+.carousel-btn.next {
+  right: 12px;
 }

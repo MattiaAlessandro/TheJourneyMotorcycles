@@ -8,7 +8,7 @@ function toggleForm(id){
   form.style.display = form.style.display === "block" ? "none" : "block";
 }
 
- //* CAROUSEL MULTI-INSTANCE + SWIPE */
+/* CAROUSEL MULTI-INSTANCE + SWIPE */
 document.querySelectorAll("[data-carousel]").forEach(carousel => {
 
   const track = carousel.querySelector(".carousel-track");
@@ -23,7 +23,6 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
     track.style.transform = `translateX(-${index * 100}%)`;
   }
 
-  // Pulsanti
   nextBtn?.addEventListener("click", () => {
     index = (index + 1) % total;
     update();
@@ -34,27 +33,17 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
     update();
   });
 
-  // SWIPE TOUCH
+  // Swipe Mobile
   let startX = 0;
-  let moving = false;
-
   track.addEventListener("touchstart", e => {
     startX = e.touches[0].clientX;
-    moving = true;
   }, { passive: true });
 
-  track.addEventListener("touchmove", e => {
-    if (!moving) return;
-    const diff = e.touches[0].clientX - startX;
-
-    if (Math.abs(diff) > 60) {
-      index = diff > 0 ? (index - 1 + total) % total : (index + 1) % total;
-      update();
-      moving = false;
-    }
+  track.addEventListener("touchend", e => {
+    const diff = e.changedTouches[0].clientX - startX;
+    if (diff > 50) prevBtn.click();
+    if (diff < -50) nextBtn.click();
   }, { passive: true });
-
-  track.addEventListener("touchend", () => { moving = false; });
 
   update();
 });
