@@ -203,41 +203,50 @@ form button{width:100%;padding:10px;background:var(--accent);border:none;color:#
   }
 }
 
-/* MOSAICO FOTO */
-.photo-grid {
+/* SEZIONE MOSAICO / LA COMMUNITY
+   =========================== */
+
+.photo-puzzle-section {
+  padding: 60px 20px;
   text-align: center;
-  padding: 40px 20px;
-  background-color: #111;
+  background-color: #0d0d0d; /* sfondo scuro */
 }
 
-.photo-grid h2 {
-  color: #ffa500;
-  margin-bottom: 30px;
+.photo-puzzle-section h2 {
+  color: #ff6600; /* arancione del tema */
+  font-size: 2rem;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
 }
 
-#gallery {
+.photo-puzzle {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 10px;
   justify-items: center;
 }
 
-#gallery img {
+.photo-puzzle img {
   width: 100%;
-  height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
-#gallery img:hover {
-  transform: scale(1.15);
-  z-index: 10;
-  box-shadow: 0 4px 15px rgba(255,165,0,0.6);
-}/* Nascondi il mosaico su mobile */
+.photo-puzzle img:hover {
+  transform: scale(1.12);
+  box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
+  z-index: 2;
+}
+
+/* Mobile: nascondi completamente la sezione */
 @media (max-width: 768px) {
   .photo-puzzle-section {
-    display: none;
+    display: none !important;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
   }
 }
