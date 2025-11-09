@@ -139,7 +139,7 @@ form button{width:100%;padding:10px;background:var(--accent);border:none;color:#
   color: #ddd;
   padding: 2rem 1rem 1rem;
   font-size: 0.95rem;
-  border-top: 2px solid #ff7a00;
+  border-top: 2px solid #ff6600;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -164,7 +164,7 @@ form button{width:100%;padding:10px;background:var(--accent);border:none;color:#
 }
 
 .footer-left h3 {
-  color: #ff7a00;
+  color: #ff6600;
   margin-bottom: 0.3rem;
 }
 
