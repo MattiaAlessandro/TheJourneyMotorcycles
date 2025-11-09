@@ -235,4 +235,9 @@ form button{width:100%;padding:10px;background:var(--accent);border:none;color:#
   transform: scale(1.15);
   z-index: 10;
   box-shadow: 0 4px 15px rgba(255,165,0,0.6);
+}/* Nascondi il mosaico su mobile */
+@media (max-width: 768px) {
+  .photo-puzzle-section {
+    display: none;
+  }
 }
