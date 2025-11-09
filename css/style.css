@@ -251,85 +251,56 @@ form button{width:100%;padding:10px;background:var(--accent);border:none;color:#
   }
 }
 
-
-/* CHI SIAMO */
-.chi-siamo-section {
-  padding: 80px 10%;
-  background-color: #111;
-  color: #eee;
-}
-
-.chi-siamo-section .section-title {
-  text-align: center;
-  font-size: 2.2rem;
-  margin-bottom: 50px;
-  color: #ff6600;
-  letter-spacing: 2px;
-}
-
-.chi-siamo-item {
+/*CHI SIAMO*/
+.about-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  margin-bottom: 80px;
-  flex-wrap: wrap;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease;
+  margin: 60px auto;
+  max-width: 1200px;
+  padding: 0 20px;
 }
 
-.chi-siamo-item.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.chi-siamo-item.reverse {
+.about-section:nth-child(even) {
   flex-direction: row-reverse;
 }
 
-.chi-siamo-item img {
-  width: 45%;
-  max-width: 500px;
-  height: auto;
+.about-section img {
+  width: 35%;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-  transition: transform 0.3s ease;
+  object-fit: cover;
 }
 
-.chi-siamo-item img:hover {
-  transform: scale(1.05);
+.about-text {
+  width: 60%;
+  color: #fff;
 }
 
-.chi-siamo-text {
-  flex: 1;
-  min-width: 250px;
+.about-text h3 {
+  color: #ffa500;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
 }
 
-.chi-siamo-text h3 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: #ff6600;
-}
-
-.chi-siamo-text p {
+.about-text p {
   font-size: 1rem;
   line-height: 1.6;
-  color: #ccc;
 }
 
-/* Mobile */
+/* Responsive */
 @media (max-width: 768px) {
-  .chi-siamo-item {
-    flex-direction: column !important;
+  .about-section {
+    flex-direction: column;
     text-align: center;
   }
 
-  .chi-siamo-item img {
-    width: 100%;
+  .about-section:nth-child(even) {
+    flex-direction: column;
   }
 
-  .chi-siamo-text {
+  .about-section img,
+  .about-text {
     width: 100%;
   }
 }
