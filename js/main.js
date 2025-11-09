@@ -8,43 +8,76 @@ function toggleForm(id){
   form.style.display = form.style.display === "block" ? "none" : "block";
 }
 
-/* CAROUSEL MULTI-INSTANCE + SWIPE */
 document.querySelectorAll("[data-carousel]").forEach(carousel => {
 
   const track = carousel.querySelector(".carousel-track");
   const slides = Array.from(track.children);
   const nextBtn = carousel.querySelector("[data-carousel-next]");
   const prevBtn = carousel.querySelector("[data-carousel-prev]");
+  const dotsContainer = carousel.querySelector("[data-carousel-dots]");
 
-  let index = 0;
-  const total = slides.length;
+  let index = 1;
 
-  function update() {
-    track.style.transform = `translateX(-${index * 100}%)`;
+  // Clona per scorrimento infinito
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[slides.length - 1].cloneNode(true);
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, slides[0]);
+
+  const newSlides = Array.from(track.children);
+
+  function setupCarousel() {
+    const width = carousel.clientWidth;
+    newSlides.forEach(slide => slide.style.width = `${width}px`);
+    track.style.width = `${width * newSlides.length}px`;
+    track.style.transform = `translateX(-${index * width}px)`;
   }
 
-  nextBtn?.addEventListener("click", () => {
-    index = (index + 1) % total;
-    update();
+  setupCarousel();
+  window.addEventListener("resize", setupCarousel);
+
+  /* Dots */
+  slides.forEach((_, i) => {
+    const dot = document.createElement("button");
+    if (i === 0) dot.classList.add("active");
+    dotsContainer.appendChild(dot);
   });
 
-  prevBtn?.addEventListener("click", () => {
-    index = (index - 1 + total) % total;
-    update();
+  function updateDots() {
+    dotsContainer.querySelectorAll("button").forEach((dot, i) => {
+      dot.classList.toggle("active", i === (index - 1 + slides.length) % slides.length);
+    });
+  }
+
+  function moveToSlide() {
+    const width = carousel.clientWidth;
+    track.style.transform = `translateX(-${index * width}px)`;
+    track.style.transition = "transform 0.5s ease";
+    updateDots();
+  }
+
+  track.addEventListener("transitionend", () => {
+    if (newSlides[index] === firstClone) {
+      index = 1;
+      track.style.transition = "none";
+      setupCarousel();
+    }
+    if (newSlides[index] === lastClone) {
+      index = slides.length;
+      track.style.transition = "none";
+      setupCarousel();
+    }
   });
 
-  // Swipe Mobile
-  let startX = 0;
-  track.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
-  }, { passive: true });
+  nextBtn?.addEventListener("click", () => { index++; moveToSlide(); });
+  prevBtn?.addEventListener("click", () => { index--; moveToSlide(); });
 
-  track.addEventListener("touchend", e => {
-    const diff = e.changedTouches[0].clientX - startX;
-    if (diff > 50) prevBtn.click();
-    if (diff < -50) nextBtn.click();
-  }, { passive: true });
+  dotsContainer.querySelectorAll("button").forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+      index = i + 1;
+      moveToSlide();
+    });
+  });
 
-  update();
 });
 
