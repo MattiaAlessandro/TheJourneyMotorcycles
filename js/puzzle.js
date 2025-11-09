@@ -1,98 +1,42 @@
-// puzzle.js
+// MOSAICO FOTO
 document.addEventListener("DOMContentLoaded", () => {
-  const puzzleContainer = document.querySelector(".photo-puzzle");
-  if (!puzzleContainer) return;
+  const gallery = document.getElementById("gallery");
+  if (!gallery) return;
 
-  // Elenco delle sottocartelle da caricare
- const imageList = [
-  "castelbuono1.jpg",
-  "castelbuono2.jpg",
-  "cb500-1.jpg",
-  "cb500-2.jpg",
-  "cb500-3.jpg",
-  "cbr1000-2.jpg",
-  "cbr1001cerda.jpeg",
-  "cesaro.jpg",
-  "ducati1.jpg",
-  "ducati2.jpg",
-  "ducati3.jpg",
-  "ducati4.jpg",
-  "ducati5.jpg",
-  "ducati6.jpg",
-  "ducati7.jpg",
-  "ducati8.jpg",
-  "ducati9.jpg",
-  "ducati10.jpg",
-  "gialla1.jpg",
-  "gialla2.jpg",
-  "gialla3.jpg",
-  "gialla4.jpg",
-  "gibellina.jpg",
-  "GRUPPO.jpg",
-  "gruppo1.jpg",
-  "gruppo2.jpg",
-  "gruppo3.jpg",
-  "gruppo4.jpg",
-  "gruppo5.jpg",
-  "gruppo6.jpg",
-  "gruppo7.jpg",
-  "gruppo8.jpg",
-  "gruppo9.jpg",
-  "gruppo10.jpg",
-  "gruppo11.jpg",
-  "gruppo-cerda.jpg",
-  "hornet-fz.jpg",
-  "hornet1.jpg",
-  "hornet2.jpg",
-  "logo.jpg",
-  "merch1.jpg",
-  "merch2.jpg",
-  "merch3.jpg",
-  "merch4.jpg",
-  "mistretta.jpg",
-  "mt09.jpg",
-  "mt09g.jpg",
-  "mt1.jpg",
-  "mta2.jpg",
-  "mta3.jpg",
-  "mta4.jpg",
-  "mta5.jpg",
-  "mta6cerda.jpg",
-  "nostremoto.jpg",
-  "r1-1.jpg",
-  "r1-2.jpg"
-];
+  // Elenco di tutte le immagini con percorsi completi
+  const images = [
+    // CB500
+    "moto/cb500/cb500-1.jpg", "moto/cb500/cb500-2.jpg",
+    // CBR1000
+    "moto/cbr1000/cbr1000-2.jpg", "moto/cbr1000/cbr1001cerda.jpg",
+    // DUCATI
+    "moto/ducati/ducati1.jpg", "moto/ducati/ducati2.jpg", "moto/ducati/ducati3.jpg",
+    "moto/ducati/ducati4.jpg", "moto/ducati/ducati5.jpg", "moto/ducati/ducati6.jpg",
+    "moto/ducati/ducati7.jpg", "moto/ducati/ducati8.jpg", "moto/ducati/ducati9.jpg",
+    "moto/ducati/ducati10.jpg",
+    // GIALLA
+    "moto/gialla/gialla1.jpg", "moto/gialla/gialla2.jpg", "moto/gialla/gialla3.jpg", "moto/gialla/gialla4.jpg",
+    // GRUPPO
+    "moto/gruppo/GRUPPO.jpg", "moto/gruppo/gruppo1.jpg", "moto/gruppo/gruppo2.jpg",
+    "moto/gruppo/gruppo3.jpg", "moto/gruppo/gruppo4.jpg", "moto/gruppo/gruppo5.jpg",
+    "moto/gruppo/gruppo6.jpg", "moto/gruppo/gruppo7.jpg", "moto/gruppo/gruppo8.jpg",
+    "moto/gruppo/gruppo9.jpg", "moto/gruppo/gruppo10.jpg", "moto/gruppo/gruppo-cerda.jpg", 
+    "moto/gruppo/merch1.jpg", "moto/gruppo/merch2.jpg", "moto/gruppo/merch3.jpg",
+     "moto/gruppo/merch4.jpg",
+    // HORNET
+    "moto/hornet/hornet1.jpg", "moto/hornet/hornet2.jpg", "moto/hornet/hornet-fz.jpg",
+    // MTA
+    "moto/mta/mta1.jpg", "moto/mta/mta2.jpg", "moto/mta/mta3.jpg", "moto/mta/mta4.jpg", "moto/mta/mta5.jpg",
+    // MT09 e R1
+    "moto/mt09/mt09.jpg", "moto/r1/r1-1.jpg", "moto/r1/r1-2.jpg",
+    // USCITE
+    "moto/uscite/cerda.jpg", "moto/uscite/cesaro.jpg", "moto/uscite/gibellina.jpg", "moto/uscite/mistretta.jpg"
+  ];
 
-  // Estensioni supportate
-  const extensions = [".jpg", ".jpeg", ".png"];
-
-  // Funzione per generare percorsi immagini
-  folders.forEach(folder => {
-    // Nome semplificato per il gruppo (es. ducati, gruppo, ecc.)
-    const folderName = folder.split("/").pop();
-
-    // Crea un piccolo titolo per gruppo
-    const title = document.createElement("h3");
-    title.textContent = folderName.toUpperCase();
-    title.style.color = "#f5f5f5";
-    title.style.gridColumn = "1 / -1";
-    title.style.marginTop = "40px";
-    puzzleContainer.appendChild(title);
-
-    // Array di nomi generici (max 15 immagini per cartella)
-    for (let i = 1; i <= 15; i++) {
-      extensions.forEach(ext => {
-        const imgPath = assets/img/`${folder}/${folderName}${i}${ext}`;
-        const img = new Image();
-        img.src = imgPath;
-
-        img.onload = () => {
-          const image = document.createElement("img");
-          image.src = imgPath;
-          image.alt = `${folderName} ${i}`;
-          puzzleContainer.appendChild(image);
-        };
-      });
-    }
+  images.forEach(path => {
+    const img = document.createElement("img");
+    img.src = `assets/img/${path}`;
+    img.alt = path.split("/").pop().split(".")[0];
+    gallery.appendChild(img);
   });
 });

@@ -203,41 +203,36 @@ form button{width:100%;padding:10px;background:var(--accent);border:none;color:#
   }
 }
 
-/* PUZZLE FOTO */
-.photo-puzzle-section {
-  padding: 60px 20px;
-  background-color: #111;
+/* MOSAICO FOTO */
+.photo-grid {
   text-align: center;
+  padding: 40px 20px;
+  background-color: #111;
 }
 
-.photo-puzzle-section h2 {
-  color: #f5f5f5;
-  font-size: 2rem;
+.photo-grid h2 {
+  color: #ffa500;
   margin-bottom: 30px;
 }
 
-.photo-puzzle {
+#gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 8px;
+  gap: 10px;
   justify-items: center;
 }
 
-.photo-puzzle img {
+#gallery img {
   width: 100%;
   height: auto;
-  max-height: 150px;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
 }
 
-/* Effetto zoom solo su desktop */
-@media (hover: hover) {
-  .photo-puzzle img:hover {
-    transform: scale(1.5);
-    z-index: 10;
-    box-shadow: 0 4px 12px rgba(255, 165, 0, 0.6);
-  }
+#gallery img:hover {
+  transform: scale(1.15);
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(255,165,0,0.6);
 }
