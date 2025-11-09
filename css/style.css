@@ -60,71 +60,73 @@ form button{width:100%;padding:10px;background:var(--accent);border:none;color:#
     color: var(--accent);
 }
 
-/* Carosello — Contenitore */
+/* ==== CAROUSEL ==== */
 .carousel {
   position: relative;
   width: 100%;
-  max-width: 500px; /* Fisso per uniformità */
-  margin: 0 auto;
+  max-width: 900px;
+  margin: 2rem auto;
   overflow: hidden;
   border-radius: 12px;
 }
 
-/* Track che scorre */
 .carousel-track {
   display: flex;
-  transition: transform 0.45s ease;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
 }
 
-/* Immagini */
 .carousel-track img {
   width: 100%;
-  height: 500px;
-  object-fit: contain; /* Mantiene proporzioni */
-  background: #111; /* Sfondo neutro per immagini non full */
+  height: 500px;           
+  object-fit: cover;       
+  object-position: center;
+  flex-shrink: 0;
+  border-radius: 12px;
 }
 
-/* Frecce */
+/* ==== BUTTONS ==== */
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
+  background: rgba(128, 128, 128, 0.4);
   border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.5rem 0.8rem;
+  transition: background 0.3s, transform 0.2s;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(120, 120, 120, 0.45);
-  cursor: pointer;
-  font-size: 24px;
+  width: 45px;
+  height: 45px;
 }
 
 .carousel-btn:hover {
-  background: rgba(255, 120, 0, 0.9); /* Arancione in hover */
+  background: rgba(255, 128, 0, 0.8);
+  transform: translateY(-50%) scale(1.05);
 }
 
-/* Posizione frecce */
-.carousel-btn.prev { left: 10px; }
-.carousel-btn.next { right: 10px; }
-
-/* Pallini */
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  gap: 6px;
+.carousel-btn.prev {
+  left: 15px;
 }
 
-.carousel-dots button {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: none;
-  background: #aaa;
+.carousel-btn.next {
+  right: 15px;
 }
 
-.carousel-dots button.active {
-  background: #ff6a00; /* Arancione */
+/* Adattamento mobile */
+@media (max-width: 768px) {
+  .carousel-track img {
+    height: 300px;
+  }
+  .carousel-btn {
+    font-size: 1.5rem;
+    width: 38px;
+    height: 38px;
+  }
 }
