@@ -168,9 +168,17 @@ form button{width:100%;padding:10px;background:var(--accent);border:none;color:#
   margin-bottom: 0.3rem;
 }
 
+.footer-right .social-link {
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 0.5rem;
+}
+
 .footer-right img {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: 0 auto;
   transition: transform 0.3s, opacity 0.3s;
 }
 
