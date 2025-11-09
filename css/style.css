@@ -236,7 +236,7 @@ form button{width:100%;padding:10px;background:var(--accent);border:none;color:#
 }
 
 .photo-puzzle img:hover {
-  transform: scale(1.90);
+  transform: scale(1.500);
   box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
   z-index: 2;
 }
