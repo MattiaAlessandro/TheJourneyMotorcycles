@@ -130,3 +130,68 @@ form button{width:100%;padding:10px;background:var(--accent);border:none;color:#
     height: 38px;
   }
 }
+
+
+
+/* ==== FOOTER ==== */
+.site-footer {
+  background-color: #0d0d0d;
+  color: #ddd;
+  padding: 2rem 1rem 1rem;
+  font-size: 0.95rem;
+  border-top: 2px solid #ff7a00;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1100px;
+  margin-bottom: 1rem;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  flex: 1;
+  min-width: 220px;
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.footer-left h3 {
+  color: #ff7a00;
+  margin-bottom: 0.3rem;
+}
+
+.footer-right img {
+  width: 28px;
+  height: 28px;
+  filter: invert(90%);
+  transition: filter 0.3s, transform 0.3s;
+}
+
+.footer-right img:hover {
+  filter: invert(55%) sepia(80%) saturate(600%) hue-rotate(350deg);
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #333;
+  padding-top: 0.7rem;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+}
