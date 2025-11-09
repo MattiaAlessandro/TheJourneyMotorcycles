@@ -16,27 +16,33 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
   const prevBtn = carousel.querySelector("[data-carousel-prev]");
   const dotsContainer = carousel.querySelector("[data-carousel-dots]");
 
-  let index = 1;
-
-  // Clona per scorrimento infinito
+  // Crea cloni per infinito
   const firstClone = slides[0].cloneNode(true);
   const lastClone = slides[slides.length - 1].cloneNode(true);
+
   track.appendChild(firstClone);
   track.insertBefore(lastClone, slides[0]);
 
-  const newSlides = Array.from(track.children);
+  const allSlides = Array.from(track.children);
+  let index = 1;
 
-  function setupCarousel() {
+  function setWidths() {
     const width = carousel.clientWidth;
-    newSlides.forEach(slide => slide.style.width = `${width}px`);
-    track.style.width = `${width * newSlides.length}px`;
+
+    allSlides.forEach(slide => {
+      slide.style.width = `${width}px`;
+    });
+
+    track.style.width = `${width * allSlides.length}px`;
     track.style.transform = `translateX(-${index * width}px)`;
   }
 
-  setupCarousel();
-  window.addEventListener("resize", setupCarousel);
+  // Inizializzazione
+  setWidths();
+  window.addEventListener("resize", setWidths);
 
-  /* Dots */
+  // Pallini (dots)
+  dotsContainer.innerHTML = "";
   slides.forEach((_, i) => {
     const dot = document.createElement("button");
     if (i === 0) dot.classList.add("active");
@@ -49,35 +55,38 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
     });
   }
 
-  function moveToSlide() {
+  function move() {
     const width = carousel.clientWidth;
+    track.style.transition = "transform 0.45s ease";
     track.style.transform = `translateX(-${index * width}px)`;
-    track.style.transition = "transform 0.5s ease";
-    updateDots();
   }
 
   track.addEventListener("transitionend", () => {
-    if (newSlides[index] === firstClone) {
-      index = 1;
-      track.style.transition = "none";
-      setupCarousel();
-    }
-    if (newSlides[index] === lastClone) {
-      index = slides.length;
-      track.style.transition = "none";
-      setupCarousel();
-    }
+    const width = carousel.clientWidth;
+    track.style.transition = "none";
+
+    if (allSlides[index] === firstClone) index = 1;
+    if (allSlides[index] === lastClone) index = slides.length;
+
+    track.style.transform = `translateX(-${index * width}px)`;
+    updateDots();
   });
 
-  nextBtn?.addEventListener("click", () => { index++; moveToSlide(); });
-  prevBtn?.addEventListener("click", () => { index--; moveToSlide(); });
+  nextBtn?.addEventListener("click", () => {
+    index++;
+    move();
+  });
+
+  prevBtn?.addEventListener("click", () => {
+    index--;
+    move();
+  });
 
   dotsContainer.querySelectorAll("button").forEach((dot, i) => {
     dot.addEventListener("click", () => {
       index = i + 1;
-      moveToSlide();
+      move();
     });
   });
 
 });
-
