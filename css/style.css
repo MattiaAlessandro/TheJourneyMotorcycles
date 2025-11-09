@@ -169,15 +169,14 @@ form button{width:100%;padding:10px;background:var(--accent);border:none;color:#
 }
 
 .footer-right img {
-  width: 28px;
-  height: 28px;
-  filter: invert(90%);
-  transition: filter 0.3s, transform 0.3s;
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s, opacity 0.3s;
 }
 
 .footer-right img:hover {
-  filter: invert(55%) sepia(80%) saturate(600%) hue-rotate(350deg);
-  transform: scale(1.1);
+  transform: scale(1.15);
+  opacity: 0.8;
 }
 
 .footer-bottom {
