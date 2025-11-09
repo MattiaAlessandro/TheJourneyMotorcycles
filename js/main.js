@@ -14,12 +14,19 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
   const slides = Array.from(track.children);
   const nextBtn = carousel.querySelector("[data-carousel-next]");
   const prevBtn = carousel.querySelector("[data-carousel-prev]");
-  const dotsContainer = carousel.querySelector("[data-carousel-dots]");
 
-  // Crea cloni per infinito
+  // Se non esiste il container dei pallini → lo creo
+  let dotsContainer = carousel.querySelector("[data-carousel-dots]");
+  if (!dotsContainer) {
+    dotsContainer = document.createElement("div");
+    dotsContainer.classList.add("carousel-dots");
+    dotsContainer.setAttribute("data-carousel-dots", "");
+    carousel.appendChild(dotsContainer);
+  }
+
+  // Cloni per scorrimento infinito
   const firstClone = slides[0].cloneNode(true);
   const lastClone = slides[slides.length - 1].cloneNode(true);
-
   track.appendChild(firstClone);
   track.insertBefore(lastClone, slides[0]);
 
@@ -37,11 +44,10 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
     track.style.transform = `translateX(-${index * width}px)`;
   }
 
-  // Inizializzazione
   setWidths();
   window.addEventListener("resize", setWidths);
 
-  // Pallini (dots)
+  // Pallini
   dotsContainer.innerHTML = "";
   slides.forEach((_, i) => {
     const dot = document.createElement("button");
@@ -65,8 +71,8 @@ document.querySelectorAll("[data-carousel]").forEach(carousel => {
     const width = carousel.clientWidth;
     track.style.transition = "none";
 
-    if (allSlides[index] === firstClone) index = 1;
-    if (allSlides[index] === lastClone) index = slides.length;
+    if (allSlides[index] === allSlides[allSlides.length - 1]) index = slides.length;
+    if (allSlides[index] === allSlides[0]) index = 1;
 
     track.style.transform = `translateX(-${index * width}px)`;
     updateDots();
