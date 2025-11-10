@@ -8,7 +8,7 @@ function toggleForm(id) {
     form.classList.remove('open');
     setTimeout(() => {
       form.style.display = 'none';
-    }, 800);
+    }, 1500);
   } else {
     form.style.display = 'block';
     setTimeout(() => {
