@@ -50,7 +50,7 @@ body{background:var(--bg);color:#eee;font-size:1rem;letter-spacing:0.05em;}
 
 #intro-overlay.zoom-to-logo #intro-video {
   top: 18px;
-  left: 28px;
+  left: calc(50% - 600px + 28px);
   width: 50px;
   height: 50px;
   max-width: 50px;
@@ -58,6 +58,12 @@ body{background:var(--bg);color:#eee;font-size:1rem;letter-spacing:0.05em;}
   border-radius: 50%;
   border: 2px solid #fff;
   object-fit: cover;
+}
+
+@media (max-width: 1200px) {
+  #intro-overlay.zoom-to-logo #intro-video {
+    left: 28px;
+  }
 }
 
 header{padding:18px 28px;position:sticky;top:0;z-index:40;background:#000;}
@@ -68,8 +74,8 @@ header{padding:18px 28px;position:sticky;top:0;z-index:40;background:#000;}
 
 .burger{display:none;font-size:1.75rem;color:#fff;background:none;border:none;cursor:pointer;}
 
-.container{max-width:1200px;margin:0 auto;padding:0;}
-.container:not(:has(.hero)){padding:2.5rem 1.25rem;}
+.container{max-width:1200px;margin:0 auto;padding:2.5rem 1.25rem;}
+.container:has(.hero){padding:0;max-width:none;}
 .container h1{text-align:center;font-size:clamp(3rem, 8vw, 5.75rem);margin-bottom:1.25rem;letter-spacing:0.1em;font-family:'Bebas Neue',sans-serif;text-transform:uppercase;}
 .container .subtitle{text-align:center;font-size:clamp(1.25rem, 3vw, 2rem);color:var(--muted);margin-bottom:2.5rem;letter-spacing:0.08em;}
 
@@ -77,6 +83,8 @@ header{padding:18px 28px;position:sticky;top:0;z-index:40;background:#000;}
   text-align:center;
   padding:8rem 0;
   margin:0;
+  margin-left:calc(-50vw + 50%);
+  margin-right:calc(-50vw + 50%);
   width:100vw;
   background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../assets/img/moto/gruppo/nostremoto.jpg');
   background-size:cover;
