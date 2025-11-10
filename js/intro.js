@@ -28,17 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
       // Immediately start zoom and slide animation to logo position
       introOverlay.classList.add('zoom-to-logo');
       
-      // After animation completes, fade out overlay and show real logo
+      // After animation completes, crossfade video with real logo
       setTimeout(() => {
-        introOverlay.classList.add('complete');
+        // Start fading in the real logo while video is still visible
         logoLink.style.opacity = '1';
-        logoLink.style.transition = 'opacity 0.5s ease';
+        logoLink.style.transition = 'opacity 0.3s ease';
         
-        // Remove overlay from DOM after fade
+        // Fade out video overlay slightly after logo starts appearing
         setTimeout(() => {
-          introOverlay.style.display = 'none';
-        }, 500);
-      }, 1500);
+          introOverlay.classList.add('complete');
+          
+          // Remove overlay from DOM after fade
+          setTimeout(() => {
+            introOverlay.style.display = 'none';
+          }, 300);
+        }, 150);
+      }, 1800);
     }
   });
 
@@ -47,13 +52,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!introOverlay.classList.contains('complete')) {
       introOverlay.classList.add('zoom-to-logo');
       setTimeout(() => {
-        introOverlay.classList.add('complete');
         logoLink.style.opacity = '1';
-        logoLink.style.transition = 'opacity 0.5s ease';
+        logoLink.style.transition = 'opacity 0.3s ease';
         setTimeout(() => {
-          introOverlay.style.display = 'none';
-        }, 500);
-      }, 1500);
+          introOverlay.classList.add('complete');
+          setTimeout(() => {
+            introOverlay.style.display = 'none';
+          }, 300);
+        }, 150);
+      }, 1800);
     }
   }, 4000);
 });
