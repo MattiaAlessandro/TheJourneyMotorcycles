@@ -4,6 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (!introOverlay || !introVideo) return;
 
+  // Check if user has already seen the intro
+  const hasSeenIntro = sessionStorage.getItem('hasSeenIntro');
+  
+  if (hasSeenIntro) {
+    // Skip intro if already seen in this session
+    introOverlay.style.display = 'none';
+    return;
+  }
+
+  // Mark intro as seen
+  sessionStorage.setItem('hasSeenIntro', 'true');
+
   // Stop video at 2.5 seconds
   introVideo.addEventListener('timeupdate', () => {
     if (introVideo.currentTime >= 2.5) {
