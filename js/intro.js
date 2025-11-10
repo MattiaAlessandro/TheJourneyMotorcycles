@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   const introOverlay = document.getElementById('intro-overlay');
   const introVideo = document.getElementById('intro-video');
+  const logoLink = document.querySelector('.logo');
   
-  if (!introOverlay || !introVideo) return;
+  if (!introOverlay || !introVideo || !logoLink) return;
 
   // Check if user has already seen the intro
   const hasSeenIntro = sessionStorage.getItem('hasSeenIntro');
@@ -16,30 +17,45 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mark intro as seen
   sessionStorage.setItem('hasSeenIntro', 'true');
 
+  // Hide the original logo initially
+  logoLink.style.opacity = '0';
+
   // Stop video at 2.5 seconds
   introVideo.addEventListener('timeupdate', () => {
     if (introVideo.currentTime >= 2.5) {
       introVideo.pause();
       
-      // Start fade out and zoom animation
+      // Start zoom and slide animation to logo position
       setTimeout(() => {
-        introOverlay.classList.add('fade-out');
+        introOverlay.classList.add('zoom-to-logo');
         
-        // Remove overlay after fade completes
+        // After animation completes, fade out overlay and show real logo
         setTimeout(() => {
-          introOverlay.style.display = 'none';
-        }, 500);
-      }, 200);
+          introOverlay.classList.add('complete');
+          logoLink.style.opacity = '1';
+          logoLink.style.transition = 'opacity 0.5s ease';
+          
+          // Remove overlay from DOM after fade
+          setTimeout(() => {
+            introOverlay.style.display = 'none';
+          }, 500);
+        }, 1500);
+      }, 300);
     }
   });
 
-  // Fallback: if video doesn't load, hide overlay after 3 seconds
+  // Fallback: if video doesn't load, show logo after 3 seconds
   setTimeout(() => {
-    if (introOverlay.style.display !== 'none') {
-      introOverlay.classList.add('fade-out');
+    if (!introOverlay.classList.contains('complete')) {
+      introOverlay.classList.add('zoom-to-logo');
       setTimeout(() => {
-        introOverlay.style.display = 'none';
-      }, 500);
+        introOverlay.classList.add('complete');
+        logoLink.style.opacity = '1';
+        logoLink.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => {
+          introOverlay.style.display = 'none';
+        }, 500);
+      }, 1500);
     }
-  }, 3000);
+  }, 4000);
 });
