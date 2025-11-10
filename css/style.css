@@ -46,6 +46,7 @@ header{padding:18px 28px;position:sticky;top:0;z-index:40;background:#000;}
 .burger{display:none;font-size:28px;color:#fff;background:none;border:none;cursor:pointer;}
 
 .container{max-width:1200px;margin:0 auto;padding:40px 20px;}
+.container h1{text-align:center;font-size:92px;margin-bottom:20px;}
 
 .hero{text-align:center;padding:48px 0;}
 .hero h1{font-size:46px;margin-bottom:6px;}
