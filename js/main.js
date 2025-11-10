@@ -4,7 +4,17 @@ function toggleMobileNav() {
 
 function toggleForm(id) {
   const form = document.getElementById(id);
-  form.style.display = form.style.display === "block" ? "none" : "block";
+  if (form.classList.contains('open')) {
+    form.classList.remove('open');
+    setTimeout(() => {
+      form.style.display = 'none';
+    }, 800);
+  } else {
+    form.style.display = 'block';
+    setTimeout(() => {
+      form.classList.add('open');
+    }, 10);
+  }
 }
 
 document.querySelectorAll("[data-carousel]").forEach(carousel => {
