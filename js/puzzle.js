@@ -38,6 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
     img.src = src;
     img.alt = "Foto del gruppo";
     img.loading = "lazy";
+    img.style.cursor = "pointer";
+
+    // Click per aprire l'immagine
+    img.addEventListener("click", () => {
+      openImageModal(src);
+    });
 
     // fallback in caso di errore
     img.onerror = () => {
@@ -48,3 +54,46 @@ document.addEventListener("DOMContentLoaded", () => {
     galleryContainer.appendChild(img);
   });
 });
+
+// Funzione per aprire l'immagine in un modal
+function openImageModal(imageSrc) {
+  // Crea il modal overlay
+  const modal = document.createElement("div");
+  modal.className = "image-modal";
+  modal.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: pointer;
+  `;
+
+  // Crea l'immagine ingrandita
+  const img = document.createElement("img");
+  img.src = imageSrc;
+  img.style.cssText = `
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+  `;
+
+  // Chiudi il modal cliccando ovunque
+  modal.addEventListener("click", () => {
+    document.body.removeChild(modal);
+  });
+
+  // Previeni la chiusura cliccando sull'immagine stessa
+  img.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  modal.appendChild(img);
+  document.body.appendChild(modal);
+}
