@@ -25,22 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (introVideo.currentTime >= 2.5) {
       introVideo.pause();
       
-      // Start zoom and slide animation to logo position
+      // Immediately start zoom and slide animation to logo position
+      introOverlay.classList.add('zoom-to-logo');
+      
+      // After animation completes, fade out overlay and show real logo
       setTimeout(() => {
-        introOverlay.classList.add('zoom-to-logo');
+        introOverlay.classList.add('complete');
+        logoLink.style.opacity = '1';
+        logoLink.style.transition = 'opacity 0.5s ease';
         
-        // After animation completes, fade out overlay and show real logo
+        // Remove overlay from DOM after fade
         setTimeout(() => {
-          introOverlay.classList.add('complete');
-          logoLink.style.opacity = '1';
-          logoLink.style.transition = 'opacity 0.5s ease';
-          
-          // Remove overlay from DOM after fade
-          setTimeout(() => {
-            introOverlay.style.display = 'none';
-          }, 500);
-        }, 1500);
-      }, 300);
+          introOverlay.style.display = 'none';
+        }, 500);
+      }, 1500);
     }
   });
 
