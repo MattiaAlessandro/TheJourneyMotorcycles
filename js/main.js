@@ -6,14 +6,8 @@ function toggleForm(id) {
   const form = document.getElementById(id);
   if (form.classList.contains('open')) {
     form.classList.remove('open');
-    setTimeout(() => {
-      form.style.display = 'none';
-    }, 1500);
   } else {
-    form.style.display = 'block';
-    setTimeout(() => {
-      form.classList.add('open');
-    }, 10);
+    form.classList.add('open');
   }
 }
 

@@ -34,8 +34,8 @@ header{padding:18px 28px;position:sticky;top:0;z-index:40;background:#000;}
 .list-uscite .info{padding:16px 20px;display:flex;justify-content:space-between;align-items:center;}
 .list-uscite button{background:var(--accent);border:none;padding:8px 14px;border-radius:6px;color:#fff;cursor:pointer;font-weight:600;}
 
-form{background:var(--card);padding:22px;border-radius:12px;margin-top:20px;display:none;transition:max-height 1.5s ease, opacity 1.5s ease;max-height:0;opacity:0;overflow:hidden;}
-form.open{max-height:500px;opacity:1;}
+form{background:var(--card);padding:22px;border-radius:12px;margin-top:20px;max-height:0;opacity:0;overflow:hidden;transition:max-height 1.5s ease, opacity 1.5s ease, margin-top 1.5s ease;}
+form.open{max-height:500px;opacity:1;margin-top:20px;}
 form input{width:100%;padding:10px;margin-bottom:12px;border-radius:6px;border:none;background:#222;color:#eee;}
 form button{width:100%;padding:10px;background:var(--accent);border:none;color:#fff;font-weight:600;border-radius:6px;cursor:pointer;}
 
