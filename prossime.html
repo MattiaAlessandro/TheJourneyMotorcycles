@@ -34,11 +34,15 @@
           <span>Mistretta</span>
           <button onclick="toggleForm('f1')">Partecipa</button>
         </div>
-        <form id="f1">
-          <input placeholder="Nome">
-          <input placeholder="Moto">
-          <input placeholder="Telefono">
-          <button>Invia</button>
+        <form id="f1" class="trip-form" data-trip="Mistretta">
+          <input type="text" name="nome" placeholder="Nome" required>
+          <input type="text" name="moto" placeholder="Modello Moto" required>
+          <input type="tel" name="telefono" placeholder="Telefono" required>
+          <div class="privacy-checkbox">
+            <input type="checkbox" id="privacy-f1" name="privacy" required>
+            <label for="privacy-f1">Accetto la privacy policy</label>
+          </div>
+          <button type="submit">Invia</button>
         </form>
       </div>
 
@@ -48,11 +52,15 @@
           <span>Gibellina</span>
           <button onclick="toggleForm('f2')">Partecipa</button>
         </div>
-        <form id="f2">
-          <input placeholder="Nome">
-          <input placeholder="Moto">
-          <input placeholder="Telefono">
-          <button>Invia</button>
+        <form id="f2" class="trip-form" data-trip="Gibellina">
+          <input type="text" name="nome" placeholder="Nome" required>
+          <input type="text" name="moto" placeholder="Modello Moto" required>
+          <input type="tel" name="telefono" placeholder="Telefono" required>
+          <div class="privacy-checkbox">
+            <input type="checkbox" id="privacy-f2" name="privacy" required>
+            <label for="privacy-f2">Accetto la privacy policy</label>
+          </div>
+          <button type="submit">Invia</button>
         </form>
       </div>
 
@@ -62,11 +70,15 @@
           <span>Cerda</span>
           <button onclick="toggleForm('f3')">Partecipa</button>
         </div>
-        <form id="f3">
-          <input placeholder="Nome">
-          <input placeholder="Moto">
-          <input placeholder="Telefono">
-          <button>Invia</button>
+        <form id="f3" class="trip-form" data-trip="Cerda">
+          <input type="text" name="nome" placeholder="Nome" required>
+          <input type="text" name="moto" placeholder="Modello Moto" required>
+          <input type="tel" name="telefono" placeholder="Telefono" required>
+          <div class="privacy-checkbox">
+            <input type="checkbox" id="privacy-f3" name="privacy" required>
+            <label for="privacy-f3">Accetto la privacy policy</label>
+          </div>
+          <button type="submit">Invia</button>
         </form>
       </div>
 
@@ -76,11 +88,15 @@
           <span>Cesarò</span>
           <button onclick="toggleForm('f4')">Partecipa</button>
         </div>
-        <form id="f4">
-          <input placeholder="Nome">
-          <input placeholder="Moto">
-          <input placeholder="Telefono">
-          <button>Invia</button>
+        <form id="f4" class="trip-form" data-trip="Cesarò">
+          <input type="text" name="nome" placeholder="Nome" required>
+          <input type="text" name="moto" placeholder="Modello Moto" required>
+          <input type="tel" name="telefono" placeholder="Telefono" required>
+          <div class="privacy-checkbox">
+            <input type="checkbox" id="privacy-f4" name="privacy" required>
+            <label for="privacy-f4">Accetto la privacy policy</label>
+          </div>
+          <button type="submit">Invia</button>
         </form>
       </div>
 
@@ -113,6 +129,7 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/forms.js"></script>
 </body>
 </html>
 

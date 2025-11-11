@@ -25,10 +25,15 @@
 
   <main class="container">
     <h1>Iscriviti alla newsletter</h1>
-    <form style="display:block;max-width:420px;margin:0 auto;">
-      <input placeholder="Nome">
-      <input placeholder="Email">
-      <button>Iscriviti</button>
+    <p class="subtitle">Iscriviti per rimanere aggiornato/a sulle prossime mete</p>
+    <form id="newsletter-form" style="display:block;max-width:420px;margin:0 auto;">
+      <input type="text" name="nome" placeholder="Nome" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <div class="privacy-checkbox">
+        <input type="checkbox" id="privacy-newsletter" name="privacy" required>
+        <label for="privacy-newsletter">Accetto la privacy policy</label>
+      </div>
+      <button type="submit">Iscriviti</button>
     </form>
   </main>
 
@@ -58,5 +63,6 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/forms.js"></script>
 </body>
 </html>
