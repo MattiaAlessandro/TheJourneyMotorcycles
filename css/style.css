@@ -70,6 +70,9 @@ header{padding:18px 28px;position:sticky;top:0;z-index:40;background:#000;}
 .nav{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;}
 .nav-links{display:flex;gap:22px;list-style:none;}
 .nav-links a{text-decoration:none;color:#fff;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;}
+.nav-links a:hover{color:var(--accent);}
+.nav-links a:focus{outline:none;}
+.nav-links a:active{color:var(--accent);}
 .logo{position:relative;z-index:10000;}
 .logo img{height:50px;width:50px;border-radius:50%;border:2px solid #fff;object-fit:cover;}
 
