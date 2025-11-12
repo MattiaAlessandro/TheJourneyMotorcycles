@@ -476,3 +476,36 @@ form button:active{background:#cc5500;}
     width: 100%;
   }
 }
+
+
+/* Added: remove mobile tap highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Keep focus visible for keyboard users */
+:focus { outline: none; }
+
+/* simple active feedback */
+button:active, a:active { background-color: rgba(255,140,0,0.12); }
+
+/* Splash overlay styles */
+.splash-overlay {
+  position: fixed;
+  inset: 0;
+  background: #ff7f00; /* arancione */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.6s ease;
+}
+.splash-overlay video { max-width: 90%; max-height: 90%; display: block; }
+
+/* hide content until intro finished */
+.hidden-until-intro { visibility: hidden; opacity: 0; transition: opacity 0.6s ease; }
+.intro-done { visibility: visible; opacity: 1; transition: opacity 0.6s ease; }
+
+/* form message */
+.form-message { margin-top: 0.5rem; font-weight: 600; }

@@ -1,5 +1,5 @@
 // Google Apps Script Web App URLs
-const NEWSLETTER_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzhK4u1mRf9kzJ9rBCzqhWKDPaF9Lq2yduwECvLtKmdxGhYEsnTFw1HXSVEr84gcxt1_g/exec';
+const NEWSLETTER_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbySdknPVeSmVXkVdJFsM-tT6EElQgM8f2qJoqhvUt7fxtuY564N1vykhv29mYwoX-t2lQ/exec';
 const TRIPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx-x6CoGAPqu1LR0En49_8SdRYktLLbEE9bfLSmWdLUo7QpRdVup8i4L26ALtp29AQx/exec';
 
 // Newsletter form handler
@@ -71,4 +71,31 @@ tripForms.forEach(form => {
       alert('Si è verificato un errore. Riprova più tardi.');
     }
   });
+});
+
+
+// Prossime handler (added)
+document.addEventListener("DOMContentLoaded", function() {
+  const prossimeForm = document.getElementById("prossimeForm");
+  const message = document.getElementById("message-prossime");
+  if (prossimeForm) {
+    prossimeForm.addEventListener("submit", async function(e) {
+      e.preventDefault();
+      message.textContent = "Invio in corso...";
+      try {
+        const res = await fetch("https://script.google.com/macros/s/AKfycbx-x6CoGAPqu1LR0En49_8SdRYktLLbEE9bfLSmWdLUo7QpRdVup8i4L26ALtp29AQx/exec", { method: "POST", body: new FormData(prossimeForm) });
+        if (res.ok) {
+          message.textContent = "Iscrizione completata con successo!";
+          message.style.color = "green";
+          prossimeForm.reset();
+        } else {
+          message.textContent = "Errore durante l'invio. Riprova.";
+          message.style.color = "red";
+        }
+      } catch (err) {
+        message.textContent = "Errore di connessione.";
+        message.style.color = "red";
+      }
+    });
+  }
 });

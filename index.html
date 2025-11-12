@@ -6,7 +6,7 @@
   <title>The Journey Motorcycles</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="home-page">
+<body class="home-page" class="hidden-until-intro">
 
   <!-- Intro Video Animation -->
   <div id="intro-overlay">
@@ -112,6 +112,52 @@
 
   <script src="js/main.js"></script>
   <script src="js/intro.js"></script>
+
+<!-- Splash overlay inserted by assistant -->
+<div id="splash-overlay" class="splash-overlay" aria-hidden="true" style="display:none">
+  <video id="splash-video" playsinline muted preload="auto"></video>
+</div>
+<script>
+(function(){
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const seen = localStorage.getItem('tj_seen_intro');
+  const overlay = document.getElementById('splash-overlay');
+  const videoEl = document.getElementById('splash-video');
+  const desktopSrc = 'assets/videos/intro-logo.mp4';
+  const mobileSrc = 'assets/videos/intro_mobile_2_7s.mp4';
+  const chosen = isMobile ? mobileSrc : desktopSrc;
+  videoEl.src = chosen;
+  videoEl.autoplay = true;
+  videoEl.muted = true;
+  videoEl.playsInline = true;
+  function finishIntro(){
+    overlay.style.opacity = 0;
+    overlay.style.pointerEvents = 'none';
+    document.body.classList.remove('hidden-until-intro');
+    document.body.classList.add('intro-done');
+  }
+  if (!seen) {
+    overlay.style.display = 'flex';
+    videoEl.addEventListener('ended', function(){ 
+      localStorage.setItem('tj_seen_intro', '1');
+      finishIntro();
+      videoEl.src='';
+    });
+    const playPromise = videoEl.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(()=>{
+        setTimeout(()=>{ localStorage.setItem('tj_seen_intro','1'); finishIntro(); }, 3000);
+      });
+    }
+  } else {
+    overlay.style.display = 'none';
+    document.body.classList.remove('hidden-until-intro');
+    document.body.classList.add('intro-done');
+  }
+})();
+</script>
+<!-- end injected splash -->
+
 </body>
 </html>
 
