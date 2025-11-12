@@ -1,126 +1,120 @@
-/* ============================================================
-   THE JOURNEY MOTORCYCLES - STYLE.CSS
-   Versione aggiornata (intro nero + form + tap fix)
-   ============================================================ */
+/* ==============================
+   BASE STYLE — THE JOURNEY MOTORCYCLES
+   ============================== */
 
-/* ---- Reset e base ---- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
 }
 
 html, body {
-  width: 100%;
   height: 100%;
   font-family: "Poppins", sans-serif;
-  color: #fff;
   background-color: #000;
+  color: #fff;
   scroll-behavior: smooth;
 }
 
-:focus {
-  outline: none;
+body.hidden-until-intro {
+  overflow: hidden;
 }
 
-a {
+/* Evita evidenziazione blu su mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ==============================
+   HEADER
+   ============================== */
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.9);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+header img.logo {
+  height: 50px;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+nav a {
+  color: #fff;
   text-decoration: none;
-  color: inherit;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-button, a {
-  cursor: pointer;
+nav a:hover,
+nav a.active {
+  color: #ff7f00;
 }
 
-button:active, a:active {
-  background-color: rgba(255,140,0,0.12);
-}
+/* ==============================
+   SPLASH / INTRO ANIMATION
+   ============================== */
 
-/* ---- Splash screen intro ---- */
-.splash-overlay {
+#intro-video {
   position: fixed;
   inset: 0;
-  background: #000;
-  display: none;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   z-index: 9999;
-  transition: opacity 0.6s ease;
+  background-color: #000;
 }
 
-.splash-overlay video {
-  max-width: 90%;
-  max-height: 90%;
-  display: block;
+body.loaded #intro-video {
+  display: none;
 }
 
-.hidden-until-intro {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
+/* ==============================
+   MAIN SECTIONS
+   ============================== */
 
-.intro-done {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.6s ease;
-}
-
-/* ---- Layout generico ---- */
 main {
-  padding: 3rem 1rem;
-  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-h1, h2, h3 {
-  font-weight: 700;
-  letter-spacing: 1px;
-}
+/* ==============================
+   NEWSLETTER + FORM STYLING
+   ============================== */
 
-p {
-  line-height: 1.6;
-  font-size: 1rem;
-}
-
-/* ---- Pulsanti generali ---- */
-button,
-.btn,
-.btn-partecipa {
-  display: inline-block;
-  background-color: #ff7f00;
-  color: #000;
-  font-weight: 700;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  padding: 0.8rem 1.2rem;
-  margin-top: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button:hover,
-.btn:hover,
-.btn-partecipa:hover {
-  background-color: #ffa333;
-  transform: translateY(-2px);
-}
-
-/* ---- Forms (Newsletter + Prossime Uscite) ---- */
-main.newsletter-section,
-main.prossime-section {
+.newsletter-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
-  background-color: #000;
-  color: #fff;
-  padding-top: 5rem;
+  text-align: center;
+  gap: 2rem;
 }
 
+.newsletter-section h1 {
+  font-size: 2rem;
+  color: #ff7f00;
+  text-shadow: 0 0 8px rgba(255, 127, 0, 0.4);
+}
+
+/* 🔸 Form principale con effetto vetro */
 form.newsletter-form,
 form.prossime-form {
   display: flex;
@@ -128,18 +122,20 @@ form.prossime-form {
   gap: 1rem;
   width: 100%;
   max-width: 420px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 25px rgba(255, 127, 0, 0.25);
   text-align: left;
+  color: #fff;
 }
 
+/* Etichette e campi */
 form label {
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
+  font-weight: 500;
+  margin-top: 0.5rem;
 }
 
 form input[type="text"],
@@ -147,76 +143,109 @@ form input[type="email"],
 form input[type="tel"],
 form input[type="number"] {
   padding: 0.75rem 1rem;
-  border: none;
+  border: 1px solid #333;
   border-radius: 6px;
-  background-color: #222;
+  background-color: #111;
   color: #fff;
   font-size: 1rem;
   width: 100%;
 }
 
-form input::placeholder {
-  color: #aaa;
-}
-
-fieldset.privacy-field {
-  border: 1px solid #444;
-  border-radius: 8px;
+/* Privacy field */
+.privacy-field {
+  margin-top: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 1rem;
-  margin-top: 0.5rem;
+  border-radius: 10px;
 }
 
-fieldset legend {
-  font-size: 0.9rem;
+.privacy-field legend {
   font-weight: 600;
-  padding: 0 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
-fieldset label {
-  display: inline-block;
+.privacy-field label {
   margin-right: 1rem;
-  font-size: 0.9rem;
 }
 
-button[type="submit"] {
+/* Pulsante invio */
+form button {
   background-color: #ff7f00;
-  color: #000;
-  font-weight: 700;
+  color: #fff;
   border: none;
+  padding: 0.9rem;
   border-radius: 8px;
-  padding: 0.8rem 1rem;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-button[type="submit"]:hover {
-  background-color: #ffa333;
+form button:hover {
+  background-color: #ffa733;
+  transform: scale(1.05);
 }
 
 .form-message {
-  margin-top: 0.5rem;
-  font-weight: 600;
+  margin-top: 1rem;
   text-align: center;
-  color: #ff7f00;
-  min-height: 1.5em;
+  font-weight: 500;
 }
 
-/* ---- Responsive ---- */
+/* ==============================
+   FOOTER
+   ============================== */
+
+footer {
+  background-color: #000;
+  color: #888;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #111;
+}
+
+footer a {
+  color: #ff7f00;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+
 @media (max-width: 768px) {
+  header {
+    padding: 0.75rem 1rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    background: rgba(0,0,0,0.95);
+    position: absolute;
+    top: 70px;
+    right: 0;
+    padding: 1rem 2rem;
+    border-radius: 0 0 12px 12px;
+    display: none;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
   main {
-    padding: 2rem 1rem;
+    padding-top: 80px;
   }
 
   form.newsletter-form,
   form.prossime-form {
     width: 90%;
     padding: 1.5rem;
-  }
-
-  button,
-  .btn,
-  .btn-partecipa {
-    width: 100%;
   }
 }
