@@ -1,7 +1,44 @@
-* { -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; }
-:focus { outline: none; }
-button:active, a:active { background-color: rgba(255,140,0,0.12); }
+/* ============================================================
+   THE JOURNEY MOTORCYCLES - STYLE.CSS
+   Versione aggiornata (intro nero + form + tap fix)
+   ============================================================ */
 
+/* ---- Reset e base ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  background-color: #000;
+  scroll-behavior: smooth;
+}
+
+:focus {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button, a {
+  cursor: pointer;
+}
+
+button:active, a:active {
+  background-color: rgba(255,140,0,0.12);
+}
+
+/* ---- Splash screen intro ---- */
 .splash-overlay {
   position: fixed;
   inset: 0;
@@ -12,7 +49,174 @@ button:active, a:active { background-color: rgba(255,140,0,0.12); }
   z-index: 9999;
   transition: opacity 0.6s ease;
 }
-.splash-overlay video { max-width: 90%; max-height: 90%; display: block; }
-.hidden-until-intro { visibility: hidden; opacity: 0; transition: opacity 0.6s ease; }
-.intro-done { visibility: visible; opacity: 1; transition: opacity 0.6s ease; }
-.form-message { margin-top: 0.5rem; font-weight: 600; }
+
+.splash-overlay video {
+  max-width: 90%;
+  max-height: 90%;
+  display: block;
+}
+
+.hidden-until-intro {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.intro-done {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+/* ---- Layout generico ---- */
+main {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+p {
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* ---- Pulsanti generali ---- */
+button,
+.btn,
+.btn-partecipa {
+  display: inline-block;
+  background-color: #ff7f00;
+  color: #000;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.2rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover,
+.btn:hover,
+.btn-partecipa:hover {
+  background-color: #ffa333;
+  transform: translateY(-2px);
+}
+
+/* ---- Forms (Newsletter + Prossime Uscite) ---- */
+main.newsletter-section,
+main.prossime-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background-color: #000;
+  color: #fff;
+  padding-top: 5rem;
+}
+
+form.newsletter-form,
+form.prossime-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 420px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  text-align: left;
+}
+
+form label {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="number"] {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #222;
+  color: #fff;
+  font-size: 1rem;
+  width: 100%;
+}
+
+form input::placeholder {
+  color: #aaa;
+}
+
+fieldset.privacy-field {
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+
+fieldset legend {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0 0.5rem;
+}
+
+fieldset label {
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: 0.9rem;
+}
+
+button[type="submit"] {
+  background-color: #ff7f00;
+  color: #000;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #ffa333;
+}
+
+.form-message {
+  margin-top: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: #ff7f00;
+  min-height: 1.5em;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  main {
+    padding: 2rem 1rem;
+  }
+
+  form.newsletter-form,
+  form.prossime-form {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  button,
+  .btn,
+  .btn-partecipa {
+    width: 100%;
+  }
+}
