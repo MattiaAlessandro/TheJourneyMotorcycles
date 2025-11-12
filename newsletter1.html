@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Newsletter | The Journey Motorcycles</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="hidden-until-intro">
+<main class="newsletter-section">
+  <h1>Iscriviti alla Newsletter</h1>
+  <form id="newsletterForm" class="newsletter-form">
+    <label for="name">Nome</label>
+    <input id="name" name="name" type="text" required>
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required>
+    <label for="moto">Modello moto</label>
+    <input id="moto" name="moto" type="text">
+    <fieldset class="privacy-field">
+      <legend>Hai letto e accetti la privacy policy?</legend>
+      <label><input type="radio" name="privacy" value="Si" required> Sì</label>
+      <label><input type="radio" name="privacy" value="No"> No</label>
+    </fieldset>
+    <button type="submit">Iscriviti</button>
+  </form>
+  <p id="newsletterMessage" class="form-message"></p>
+</main>
+<script src="js/forms.js" defer></script>
+</body>
+</html>
