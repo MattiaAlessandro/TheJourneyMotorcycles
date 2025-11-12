@@ -1,6 +1,6 @@
 // Google Apps Script Web App URLs
 const NEWSLETTER_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzhK4u1mRf9kzJ9rBCzqhWKDPaF9Lq2yduwECvLtKmdxGhYEsnTFw1HXSVEr84gcxt1_g/exec';
-const TRIPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzF1QTmqmiLNhLRtDRrXZym514IWowpbpQ9Q2aCxPYqJ--SgRtZMFAAgudWaV7gGJ85/exec';
+const TRIPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx-x6CoGAPqu1LR0En49_8SdRYktLLbEE9bfLSmWdLUo7QpRdVup8i4L26ALtp29AQx/exec';
 
 // Newsletter form handler
 const newsletterForm = document.getElementById('newsletter-form');
