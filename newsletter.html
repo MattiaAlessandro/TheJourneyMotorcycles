@@ -1,18 +1,17 @@
 <!doctype html>
 <html lang="it">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Newsletter | The Journey Motorcycles</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Newsletter</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="hidden-until-intro">
-<main class="newsletter-section">
-  <<div class="uscita">
-    <header>
+<body>
+
+  <header>
     <div class="nav">
       <a href="index.html" class="logo">
-        <img src="assets/img/logo.jpg" alt="">
+        <img src="assets/img/logo.jpg">
       </a>
       <nav class="nav-links">
         <a href="index.html">Home</a>
@@ -23,8 +22,16 @@
       <button class="burger" onclick="toggleMobileNav()">☰</button>
     </div>
   </header>
-        
-        <form id="f1" class="trip-form" data-trip="Resta in contatto con noi e mantieniti aggiornato sulle prossime organizzazioni">
+
+  <main class="container">
+    <h1>Newsletter</h1>
+    <p class="subtitle">Iscriviti alla newsletter per rimanere aggiornato sulle prossime destinazioni</p>
+    <div class="list-uscite">
+
+      <div class="uscita">
+        <div class="banner" style="background-image:url('assets/img/moto/gruppo/merch4.jpeg')"></div>
+      
+        <form id="f1" class="trip-form" data="newsletter">
           <input type="text" name="nome" placeholder="Nome" required>
           <input type="text" name="moto" placeholder="Modello Moto" required>
           <input type="tel" name="telefono" placeholder="Telefono" required>
@@ -36,10 +43,13 @@
         <div id="message-prossime" class="form-message"></div>
 </form>
       </div>
-</main>
-<script src="js/forms.js" defer></script>
-</body>
-    <footer class="site-footer">
+
+     
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
     <div class="footer-content">
       <div class="footer-left">
         <h3>The Journey Motorcycle</h3>
@@ -63,4 +73,8 @@
       <p>© 2025 The Journey Motorcycle – Tutti i diritti riservati</p>
     </div>
   </footer>
+  <script src="js/forms.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/forms.js"></script>
+</body>
 </html>
