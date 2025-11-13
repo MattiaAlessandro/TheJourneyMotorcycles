@@ -29,21 +29,32 @@
     <div class="list-uscite">
 
       <div class="uscita">
-        <div class="banner" style="background-image:url('assets/img/moto/gruppo/merch4.jpg')"></div>
-        <button onclick="toggleForm('f1')">Iscriviti</button>
-      
-        <form id="f1" class="trip-form" data="newsletter">
-          <input type="text" name="nome" placeholder="Nome" required>
-          <input type="text" name="moto" placeholder="Modello Moto" required>
-          <input type="tel" name="telefono" placeholder="Telefono" required>
-          <div class="privacy-checkbox">
-            <input type="checkbox" id="privacy-f1" name="privacy" required>
-            <label for="privacy-f1">Accetto la privacy policy</label>
-          </div>
-          <button type="submit">Invia</button>
+  <div class="banner" style="background-image:url('assets/img/moto/gruppo/merch4.jpg')"></div>
+
+  <div class="iscriviti-wrapper">
+    <button class="btn-iscriviti" onclick="openPopup('popup-f1')">Iscriviti</button>
+  </div>
+
+  <!-- Popup Form -->
+  <div id="popup-f1" class="popup-overlay" onclick="closePopup(event, 'popup-f1')">
+    <div class="popup-content" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="closePopup(event, 'popup-f1')">×</button>
+      <form id="f1" class="trip-form" data="newsletter">
+        <h2>Iscriviti alla Newsletter</h2>
+        <input type="text" name="nome" placeholder="Nome" required>
+        <input type="text" name="moto" placeholder="Modello Moto" required>
+        <input type="tel" name="telefono" placeholder="Telefono" required>
+        <div class="privacy-checkbox">
+          <input type="checkbox" id="privacy-f1" name="privacy" required>
+          <label for="privacy-f1">Accetto la privacy policy</label>
+        </div>
+        <button type="submit">Invia</button>
         <div id="message-prossime" class="form-message"></div>
-</form>
-      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 
      
 
@@ -77,5 +88,20 @@
   <script src="js/forms.js"></script>
   <script src="js/main.js"></script>
   <script src="js/forms.js"></script>
+ 
+  
+  
+  /* pop up js*/
+  <script>
+function openPopup(id) {
+  document.getElementById(id).classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closePopup(event, id) {
+  document.getElementById(id).classList.remove('active');
+  document.body.style.overflow = '';
+}
+</script>
+
 </body>
 </html>
