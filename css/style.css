@@ -688,3 +688,102 @@ button:active, a:active { background-color: rgba(255,140,0,0.12); }
 
 /* form message */
 .form-message { margin-top: 0.5rem; font-weight: 600; }
+
+
+
+
+/* --- PROSSIME USCITE --- */
+.list-uscite {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.uscita {
+  text-align: center;
+  overflow: hidden;
+}
+
+.banner {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+}
+
+.btn-iscriviti {
+  background-color: #d62828;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.btn-iscriviti:hover {
+  background-color: #a81f1f;
+}
+
+/* Popup Form */
+.form-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.form-popup {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.trip-form input,
+.trip-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.trip-form button {
+  width: 100%;
+  background: #d62828;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.trip-form button:hover {
+  background: #a81f1f;
+}
+
+.form-message {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
