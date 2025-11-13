@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Prossime Uscite</title>
+  <title>Prossime Uscite | The Journey Motorcycles</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,59 +11,123 @@
   <header>
     <div class="nav">
       <a href="index.html" class="logo">
-        <img src="assets/img/logo.jpg">
+        <img src="assets/img/logo.jpg" alt="The Journey Motorcycles">
       </a>
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="galleria.html">Galleria</a>
-        <a href="prossime.html">Prossime Uscite</a>
+        <a href="prossime.html" class="active">Prossime Uscite</a>
         <a href="newsletter.html">Newsletter</a>
       </nav>
       <button class="burger" onclick="toggleMobileNav()">☰</button>
     </div>
   </header>
 
-  <main class="container">
-    <h1>Prossime uscite</h1>
-    <p class="subtitle">Ride with us. Live The Journey.</p>
+  <main class="container prossime-uscite">
+    <h1>Prossime Uscite</h1>
+    <p class="subtitle">Iscriviti alla tappa che preferisci e vivi l’avventura con noi</p>
+
     <div class="list-uscite">
 
+      <!-- Mistretta -->
       <div class="uscita">
         <div class="banner" style="background-image:url('assets/img/uscite/mistretta.jpg')"></div>
-        <div class="info">
-          <span>Mistretta</span>
-          <button onclick="toggleForm('f1')">Partecipa</button>
-        </div>
-        <form id="f1" class="trip-form" data-trip="Mistretta">
-          <input type="text" name="nome" placeholder="Nome" required>
-          <input type="text" name="moto" placeholder="Modello Moto" required>
-          <input type="tel" name="telefono" placeholder="Telefono" required>
-          <div class="privacy-checkbox">
-            <input type="checkbox" id="privacy-f1" name="privacy" required>
-            <label for="privacy-f1">Accetto la privacy policy</label>
-          </div>
-          <button type="submit">Invia</button>
-        <div id="message-prossime" class="form-message"></div>
-</form>
+        <button class="btn-iscriviti" onclick="openForm('mistretta')">Iscriviti</button>
       </div>
 
+      <!-- Cerda -->
+      <div class="uscita">
+        <div class="banner" style="background-image:url('assets/img/uscite/cerda.jpg')"></div>
+        <button class="btn-iscriviti" onclick="openForm('cerda')">Iscriviti</button>
+      </div>
+
+      <!-- Cesarò -->
+      <div class="uscita">
+        <div class="banner" style="background-image:url('assets/img/uscite/cesaro.jpg')"></div>
+        <button class="btn-iscriviti" onclick="openForm('cesaro')">Iscriviti</button>
+      </div>
+
+      <!-- Gibellina -->
       <div class="uscita">
         <div class="banner" style="background-image:url('assets/img/uscite/gibellina.jpg')"></div>
-        <div class="info">
-          <span>Gibellina</span>
-          <button onclick="toggleForm('f2')">Partecipa</button>
-        </div>
-        <form id="f2" class="trip-form" data-trip="Gibellina">
-          <input type="text" name="nome" placeholder="Nome" required>
-          <input type="text" name="moto" placeholder="Modello Moto" required>
-          <input type="tel" name="telefono" placeholder="Telefono" required>
-          <div class="privacy-checkbox">
-            <input type="checkbox" id="privacy-f2" name="privacy" required>
-            <label for="privacy-f2">Accetto la privacy policy</label>
-          </div>
-          <button type="submit">Invia</button>
-        </form>
+        <button class="btn-iscriviti" onclick="openForm('gibellina')">Iscriviti</button>
       </div>
+
+    </div>
+  </main>
+
+  <!-- Popup Overlay -->
+  <div id="formOverlay" class="form-overlay">
+    <div class="form-popup">
+      <span class="close-btn" onclick="closeForm()">&times;</span>
+      <h2>Iscriviti all’Uscita</h2>
+      <form id="tripForm" class="trip-form" data="prossime">
+        <input type="hidden" id="destinazione" name="destinazione">
+        <input type="text" name="nome" placeholder="Nome" required>
+        <input type="text" name="moto" placeholder="Modello Moto" required>
+        <input type="tel" name="telefono" placeholder="Telefono" required>
+        <div class="privacy-checkbox">
+          <input type="checkbox" id="privacy" name="privacy" required>
+          <label for="privacy">Accetto la privacy policy</label>
+        </div>
+        <button type="submit">Invia</button>
+        <p id="message-prossime" class="form-message"></p>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <h3>The Journey Motorcycle</h3>
+      </div>
+      <div class="footer-center">
+        <p><strong>Contatti:</strong></p>
+        <p>📞 +39 333 123 4567</p>
+        <p>✉️ thejourneymotorcycle@gmail.com</p>
+      </div>
+      <div class="footer-right">
+        <p><strong>Seguici su</strong></p>
+        <a href="https://www.instagram.com/thejourneymotorcycles/#" target="_blank" class="social-link">
+          <img src="assets/icons/instagram.svg" alt="Instagram">
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 The Journey Motorcycle – Tutti i diritti riservati</p>
+    </div>
+  </footer>
+
+  <script src="js/forms.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script>
+    function openForm(dest) {
+      document.getElementById('formOverlay').style.display = 'flex';
+      document.getElementById('destinazione').value = dest;
+    }
+    function closeForm() {
+      document.getElementById('formOverlay').style.display = 'none';
+      document.getElementById('tripForm').reset();
+    }
+  </script>
+</body>
+</html>
+
+        <input type="tel" name="telefono" placeholder="Numero di telefono" required>
+
+        <fieldset class="privacy-field">
+          <legend>Hai letto e accetti la privacy policy?</legend>
+          <label><input type="radio" name="privacy" value="Si" required> Sì</label>
+          <label><input type="radio" name="privacy" value="No"> No</label>
+        </fieldset>
+
+        <button type="submit">Invia</button>
+      </form>
+      <p id="message-prossime" class="form-message"></p>
+    </div>
+  </div>
+</div>
+
 
       <div class="uscita">
         <div class="banner" style="background-image:url('assets/img/uscite/cerda.jpg')"></div>
