@@ -126,7 +126,7 @@ body:not(.home-page) .container h1{font-size:clamp(2.25rem, 6vw, 4.3125rem);}
 .card h3{padding:1.125rem;text-align:center;font-size:clamp(1rem, 2.5vw, 1.25rem);}
 
 .list-uscite .uscita{background:var(--card);border-radius:12px;overflow:hidden;margin-bottom:24px;}
-.list-uscite .banner{height:420px;background:center/cover no-repeat;}
+.list-uscite .banner{height:220px;background:center/cover no-repeat;}
 .list-uscite .banner-newsletter{height:440px;background:center/cover no-repeat;}
 .list-uscite .info{padding:1rem 1.25rem;display:flex;justify-content:space-between;align-items:center;}
 .list-uscite .info span{font-size:clamp(1.125rem, 2.5vw, 1.5rem);}
@@ -175,6 +175,102 @@ form button:active{background:#cc5500;}
     max-width: 900px;
     text-align: center;
 }
+
+
+/* ==============================
+   POPUP FORM — NEWSLETTER
+   ============================== */
+
+.iscriviti-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.btn-iscriviti {
+  background-color: #ff7f00;
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-iscriviti:hover {
+  background-color: #ffa733;
+  transform: scale(1.05);
+}
+
+/* Overlay popup */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-overlay.active {
+  display: flex;
+}
+
+/* Contenuto popup */
+.popup-content {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 0 25px rgba(255, 127, 0, 0.25);
+  position: relative;
+  animation: popupIn 0.25s ease-out;
+}
+
+/* Animazione apertura */
+@keyframes popupIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Pulsante chiudi */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #ff7f00;
+}
+
+/* Form interno */
+.popup-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #fff;
+}
+
+.popup-content form h2 {
+  text-align: center;
+  color: #ff7f00;
+  margin-bottom: 0.5rem;
+}
+
 
 .section-title {
     font-size: clamp(1.75rem, 4vw, 2.375rem);
