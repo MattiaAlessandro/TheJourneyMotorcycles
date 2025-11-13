@@ -99,3 +99,23 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
+
+
+// === Gestione popup newsletter ===
+document.addEventListener("DOMContentLoaded", () => {
+  const openBtn = document.getElementById("openNewsletterForm");
+  const modal = document.getElementById("newsletterModal");
+
+  if (openBtn && modal) {
+    openBtn.addEventListener("click", () => {
+      modal.classList.add("active");
+    });
+
+    // Chiudi cliccando fuori
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) modal.classList.remove("active");
+    });
+  }
+});
+
