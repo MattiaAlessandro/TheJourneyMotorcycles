@@ -3,121 +3,134 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Prossime Uscite | The Journey Motorcycles</title>
+  <title>Prossime Uscite</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-  <div class="nav">
-    <a href="index.html" class="logo">
-      <img src="assets/img/logo.jpg" alt="Logo The Journey Motorcycles">
-    </a>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="galleria.html">Galleria</a>
-      <a href="prossime.html" class="active">Prossime Uscite</a>
-      <a href="newsletter.html">Newsletter</a>
-    </nav>
-  </div>
-</header>
 
-<main class="uscite-container">
-  <h1>Prossime Uscite</h1>
-  <p>Iscriviti alla tappa che preferisci e vivi l’avventura con noi</p>
-
-  <div class="uscite-list">
-    <!-- Mistretta -->
-    <div class="uscita-card">
-      <img src="assets/img/uscite/mistretta.jpg" alt="Uscita Mistretta">
-      <div class="uscita-info">
-        <h2>Mistretta</h2>
-        <p>Un percorso tra paesaggi mozzafiato e curve spettacolari.</p>
-        <button onclick="openForm('Mistretta')">Iscriviti</button>
-      </div>
-    </div>
-
-    <!-- Cerda -->
-    <div class="uscita-card">
-      <img src="assets/img/uscite/cerda.jpg" alt="Uscita Cerda">
-      <div class="uscita-info">
-        <h2>Cerda</h2>
-        <p>Scopri il fascino delle colline e l’adrenalina dei tornanti.</p>
-        <button onclick="openForm('Cerda')">Iscriviti</button>
-      </div>
-    </div>
-
-    <!-- Cesarò -->
-    <div class="uscita-card">
-      <img src="assets/img/uscite/cesaro.jpg" alt="Uscita Cesarò">
-      <div class="uscita-info">
-        <h2>Cesarò</h2>
-        <p>Un viaggio tra natura incontaminata e panorami unici.</p>
-        <button onclick="openForm('Cesarò')">Iscriviti</button>
-      </div>
-    </div>
-
-    <!-- Gibellina -->
-    <div class="uscita-card">
-      <img src="assets/img/uscite/gibellina.jpg" alt="Uscita Gibellina">
-      <div class="uscita-info">
-        <h2>Gibellina</h2>
-        <p>Arte, storia e motociclismo si incontrano in questa tappa.</p>
-        <button onclick="openForm('Gibellina')">Iscriviti</button>
-      </div>
-    </div>
-  </div>
-</main>
-
-<!-- POPUP FORM -->
-<div id="formOverlay" class="form-overlay">
-  <div class="form-popup">
-    <h2>Iscriviti all’Uscita</h2>
-    <form id="tripForm" class="trip-form">
-      <input type="hidden" name="destinazione" id="destinazione">
-      <input type="text" name="nome" placeholder="Nome" required>
-      <input type="text" name="moto" placeholder="Modello Moto" required>
-      <input type="tel" name="telefono" placeholder="Telefono" required>
-      <div class="privacy-checkbox">
-        <input type="checkbox" id="privacy" name="privacy" required>
-        <label for="privacy">Accetto la privacy policy</label>
-      </div>
-      <button type="submit">Invia</button>
-    </form>
-    <button class="close-btn" onclick="closeForm()">✕</button>
-  </div>
-</div>
-
-<footer class="site-footer">
-  <div class="footer-content">
-    <div class="footer-left">
-      <h3>The Journey Motorcycle</h3>
-    </div>
-    <div class="footer-center">
-      <p><strong>Contatti:</strong></p>
-      <p>📞 +39 333 123 4567</p>
-      <p>✉️ thejourneymotorcycle@gmail.com</p>
-    </div>
-    <div class="footer-right">
-      <p><strong>Seguici su</strong></p>
-      <a href="https://www.instagram.com/thejourneymotorcycles/#" target="_blank" class="social-link">
-        <img src="assets/icons/instagram.svg" alt="Instagram">
+  <header>
+    <div class="nav">
+      <a href="index.html" class="logo">
+        <img src="assets/img/logo.jpg">
       </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="galleria.html">Galleria</a>
+        <a href="prossime.html">Prossime Uscite</a>
+        <a href="newsletter.html">Newsletter</a>
+      </nav>
+      <button class="burger" onclick="toggleMobileNav()">☰</button>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 The Journey Motorcycle – Tutti i diritti riservati</p>
-  </div>
-</footer>
+  </header>
 
-<script src="js/forms.js"></script>
-<script>
-function openForm(dest) {
-  document.getElementById('destinazione').value = dest;
-  document.getElementById('formOverlay').style.display = 'flex';
-}
-function closeForm() {
-  document.getElementById('formOverlay').style.display = 'none';
-}
-</script>
+  <main class="container">
+    <h1>Prossime uscite</h1>
+    <p class="subtitle">Ride with us. Live The Journey.</p>
+    <div class="list-uscite">
+
+      <div class="uscita">
+        <div class="banner" style="background-image:url('assets/img/uscite/mistretta.jpg')"></div>
+        <div class="info">
+          <span>Mistretta</span>
+          <button onclick="toggleForm('f1')">Partecipa</button>
+        </div>
+        <form id="f1" class="trip-form" data-trip="Mistretta">
+          <input type="text" name="nome" placeholder="Nome" required>
+          <input type="text" name="moto" placeholder="Modello Moto" required>
+          <input type="tel" name="telefono" placeholder="Telefono" required>
+          <div class="privacy-checkbox">
+            <input type="checkbox" id="privacy-f1" name="privacy" required>
+            <label for="privacy-f1">Accetto la privacy policy</label>
+          </div>
+          <button type="submit">Invia</button>
+        <div id="message-prossime" class="form-message"></div>
+</form>
+      </div>
+
+      <div class="uscita">
+        <div class="banner" style="background-image:url('assets/img/uscite/gibellina.jpg')"></div>
+        <div class="info">
+          <span>Gibellina</span>
+          <button onclick="toggleForm('f2')">Partecipa</button>
+        </div>
+        <form id="f2" class="trip-form" data-trip="Gibellina">
+          <input type="text" name="nome" placeholder="Nome" required>
+          <input type="text" name="moto" placeholder="Modello Moto" required>
+          <input type="tel" name="telefono" placeholder="Telefono" required>
+          <div class="privacy-checkbox">
+            <input type="checkbox" id="privacy-f2" name="privacy" required>
+            <label for="privacy-f2">Accetto la privacy policy</label>
+          </div>
+          <button type="submit">Invia</button>
+        </form>
+      </div>
+
+      <div class="uscita">
+        <div class="banner" style="background-image:url('assets/img/uscite/cerda.jpg')"></div>
+        <div class="info">
+          <span>Cerda</span>
+          <button onclick="toggleForm('f3')">Partecipa</button>
+        </div>
+        <form id="f3" class="trip-form" data-trip="Cerda">
+          <input type="text" name="nome" placeholder="Nome" required>
+          <input type="text" name="moto" placeholder="Modello Moto" required>
+          <input type="tel" name="telefono" placeholder="Telefono" required>
+          <div class="privacy-checkbox">
+            <input type="checkbox" id="privacy-f3" name="privacy" required>
+            <label for="privacy-f3">Accetto la privacy policy</label>
+          </div>
+          <button type="submit">Invia</button>
+        </form>
+      </div>
+
+      <div class="uscita">
+        <div class="banner" style="background-image:url('assets/img/uscite/cesaro.jpg')"></div>
+        <div class="info">
+          <span>Cesarò</span>
+          <button onclick="toggleForm('f4')">Partecipa</button>
+        </div>
+        <form id="f4" class="trip-form" data-trip="Cesarò">
+          <input type="text" name="nome" placeholder="Nome" required>
+          <input type="text" name="moto" placeholder="Modello Moto" required>
+          <input type="tel" name="telefono" placeholder="Telefono" required>
+          <div class="privacy-checkbox">
+            <input type="checkbox" id="privacy-f4" name="privacy" required>
+            <label for="privacy-f4">Accetto la privacy policy</label>
+          </div>
+          <button type="submit">Invia</button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <h3>The Journey Motorcycle</h3>
+      </div>
+
+      <div class="footer-center">
+        <p><strong>Contatti:</strong></p>
+        <p>📞 +39 333 123 4567</p>
+        <p>✉️ thejourneymotorcycle@gmail.com</p>
+      </div>
+
+      <div class="footer-right">
+        <p><strong>Seguici su</strong></p>
+        <a href="https://www.instagram.com/thejourneymotorcycles/#" target="_blank" class="social-link">
+          <img src="assets/icons/instagram.svg" alt="Instagram">
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 The Journey Motorcycle – Tutti i diritti riservati</p>
+    </div>
+  </footer>
+  <script src="js/forms.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/forms.js"></script>
 </body>
 </html>
+
