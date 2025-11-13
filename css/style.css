@@ -126,7 +126,7 @@ body:not(.home-page) .container h1{font-size:clamp(2.25rem, 6vw, 4.3125rem);}
 .card h3{padding:1.125rem;text-align:center;font-size:clamp(1rem, 2.5vw, 1.25rem);}
 
 .list-uscite .uscita{background:var(--card);border-radius:12px;overflow:hidden;margin-bottom:24px;}
-.list-uscite .banner{height:220px;background:center/cover no-repeat;}
+.list-uscite .banner{height:420px;background:center/cover no-repeat;}
 .list-uscite .banner-newsletter{height:440px;background:center/cover no-repeat;}
 .list-uscite .info{padding:1rem 1.25rem;display:flex;justify-content:space-between;align-items:center;}
 .list-uscite .info span{font-size:clamp(1.125rem, 2.5vw, 1.5rem);}
